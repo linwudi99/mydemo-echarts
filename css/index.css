@@ -33,7 +33,7 @@ header .time {
 .main {
   min-width: 1024px;
   max-width: 1920px;
-  padding: 15px;
+  padding: 0.1875rem;
   display: flex;
 }
 .main .col {
@@ -44,9 +44,10 @@ header .time {
 }
 .main .panel {
   position: relative;
-  height: 4.5rem;
+  height: 3.875rem;
   border: 1px solid rgba(25, 186, 139, 0.17);
-  background: rgba(255, 255, 255, 0.04) url(../images/line.png);
+  padding: 0 0.1875rem;
+  margin-bottom: 0.1875rem;
 }
 .main .panel::before {
   position: absolute;
@@ -55,8 +56,8 @@ header .time {
   content: "";
   width: 10px;
   height: 10px;
-  border-top: 2px solid #02a6b5;
-  border-left: 2px solid #02a6b5;
+  border-top: 1px solid #02a6b5;
+  border-left: 1px solid #02a6b5;
 }
 .main .panel::after {
   position: absolute;
@@ -65,11 +66,8 @@ header .time {
   content: "";
   width: 10px;
   height: 10px;
-  border-top: 2px solid #02a6b5;
-  border-right: 2px solid #02a6b5;
-}
-.main .panel-center {
-  margin: 15px 0;
+  border-top: 1px solid #02a6b5;
+  border-right: 1px solid #02a6b5;
 }
 .main .panel-footer {
   position: absolute;
@@ -84,8 +82,8 @@ header .time {
   content: "";
   width: 10px;
   height: 10px;
-  border-bottom: 2px solid #02a6b5;
-  border-left: 2px solid #02a6b5;
+  border-bottom: 1px solid #02a6b5;
+  border-left: 1px solid #02a6b5;
 }
 .main .panel-footer::after {
   position: absolute;
@@ -94,8 +92,8 @@ header .time {
   content: "";
   width: 10px;
   height: 10px;
-  border-bottom: 2px solid #02a6b5;
-  border-right: 2px solid #02a6b5;
+  border-bottom: 1px solid #02a6b5;
+  border-right: 1px solid #02a6b5;
 }
 .main h2 {
   height: 0.6rem;
@@ -126,8 +124,8 @@ header .time {
   position: absolute;
   width: 30px;
   height: 10px;
-  border-top: 2px solid #02a6b5;
-  border-left: 2px solid #02a6b5;
+  border-top: 1px solid #02a6b5;
+  border-left: 1px solid #02a6b5;
   top: 0;
   left: 0;
 }
@@ -136,8 +134,8 @@ header .time {
   position: absolute;
   width: 30px;
   height: 10px;
-  border-bottom: 2px solid #02a6b5;
-  border-right: 2px solid #02a6b5;
+  border-bottom: 1px solid #02a6b5;
+  border-right: 1px solid #02a6b5;
   right: 0;
   bottom: 0;
 }
