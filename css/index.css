@@ -113,15 +113,15 @@ header .time {
 .main .chart {
   height: 3rem;
 }
-.no {
+.num {
   background: rgba(101, 132, 226, 0.1);
   padding: 0.1875rem;
 }
-.no .no-hd {
+.num .num-hd {
   position: relative;
   border: 1px solid rgba(25, 186, 139, 0.17);
 }
-.no .no-hd::before {
+.num .num-hd::before {
   content: "";
   position: absolute;
   width: 30px;
@@ -131,7 +131,7 @@ header .time {
   top: 0;
   left: 0;
 }
-.no .no-hd::after {
+.num .num-hd::after {
   content: "";
   position: absolute;
   width: 30px;
@@ -141,10 +141,10 @@ header .time {
   right: 0;
   bottom: 0;
 }
-.no .no-hd ul {
+.num .num-hd ul {
   display: flex;
 }
-.no .no-hd ul li {
+.num .num-hd ul li {
   list-style: none;
   position: relative;
   flex: 1;
@@ -157,7 +157,7 @@ header .time {
   font-family: electronicFont;
   font-weight: bold;
 }
-.no .no-hd ul li:first-child::after {
+.num .num-hd ul li:first-child::after {
   content: "";
   position: absolute;
   height: 50%;
@@ -166,10 +166,10 @@ header .time {
   right: 0;
   top: 25%;
 }
-.no .no-bd ul {
+.num .num-bd ul {
   display: flex;
 }
-.no .no-bd ul li {
+.num .num-bd ul li {
   list-style: none;
   flex: 1;
   height: 0.5rem;

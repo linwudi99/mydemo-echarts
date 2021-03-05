@@ -38,14 +38,14 @@
       </div>     
     </div>
     <div class="col">
-      <div class="no">
-          <div class="no-hd">
+      <div class="num">
+          <div class="num-hd">
             <ul>
-              <li>125811</li>
-              <li>104563</li>
+              <li id="num1"></li>
+              <li id="num2"></li>
             </ul>
           </div>
-          <div class="no-bd">
+          <div class="num-bd">
             <ul>
               <li>前端需求人数</li>
               <li>市场供应人数</li>
@@ -54,9 +54,9 @@
         </div>
         <div class="map">
           <div class="chart"></div>
-          <div class="map1"></div>
+          <!-- <div class="map1"></div>
           <div class="map2"></div>
-          <div class="map3"></div>
+          <div class="map3"></div> -->
         </div>
     </div>
     <div class="col">
@@ -78,11 +78,33 @@
     </div>
   </section>
 
+  <!-- 设置动态变化的数字 -->
+  <script src="js/countUp.js"></script>
+  <!-- 跟随屏幕大小自适应 -->
   <script src="js/flexible.js"></script>
   <script src="js/jquery-3.5.1.js"></script>
   <script src="js/echarts.min.js"></script>
   <script src="js/china.js"></script>
   <script src="js/index.js"></script>
   <script src="js/myMap.js"></script>
+  
 </body>
+  <script>
+    // 设置数字从0跳到指定数值
+    var options = {
+      useEasing: true, // 过渡动画效果，默认ture
+      useGrouping: true, // 千分位效果，例：1000->1,000。默认true
+      separator: ',', // 使用千分位时分割符号
+      decimal: '.', // 小数位分割符号
+      prefix: '', // 前置符号
+      suffix: '' // 后置符号，可汉字
+    }
+    // target,startVal,endVal,decimals,duration,options
+    // dom节点, 初始值,  结束值, 小数位数, 过渡几秒 , 初始参数
+    // document.getElementById可写可不写，countUp.js中加了判断
+    var num1 = new CountUp('num1', 0, 12056, 0, 3, options)
+    var num2 = new CountUp(document.getElementById('num2'), 0, 10428, 0, 3, options)
+    num1.start();
+    num2.start();
+  </script>
 </html>
