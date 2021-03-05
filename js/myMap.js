@@ -145,6 +145,12 @@
     }, {
       name: "昆明",
       value: 100
+    }],
+    [{
+      name: "西安"
+    }, {
+      name: "拉萨",
+      value: 100
     }]
   ];
 
@@ -185,7 +191,7 @@
     [{
       name: "上海"
     }, {
-      name: "广州",
+      name: "昆明",
       value: 100
     }]
   ];
@@ -212,22 +218,22 @@
     return res;
   };
 
-  var color = ["#fff", "#fff", "#fff"]; //航线的颜色
+  var color = ["#FF770E", "#00DA8D", "#FFF000"]; //航线的颜色
   var series = [];
   [
     ["西安", XAData],
     ["西宁", XNData],
-    ["北京", SHData]
+    ["上海", SHData]
   ].forEach(function (item, i) {
     series.push({
-      name: item[0] + " Top3",
+      name: item[0],
       type: "lines",
       zlevel: 1,
       effect: {
         show: true,
         period: 6,
         trailLength: 0.7,
-        color: "red", //arrow箭头的颜色
+        color: "#FFF", //arrow箭头的颜色
         symbolSize: 3
       },
       lineStyle: {
@@ -239,7 +245,7 @@
       },
       data: convertData(item[1])
     }, {
-      name: item[0] + " Top3",
+      name: item[0],
       type: "lines",
       zlevel: 2,
       symbol: ["none", "arrow"],
@@ -261,7 +267,7 @@
       },
       data: convertData(item[1])
     }, {
-      name: item[0] + " Top3",
+      name: item[0],
       type: "effectScatter",
       coordinateSystem: "geo",
       zlevel: 2,
@@ -313,7 +319,16 @@
         }
       }
     },
-
+    legend: {
+      orient: 'vertical',
+      top: 'bottom',
+      left: 'right',
+      data: ['西安', '西宁', '上海'],
+      textStyle: {
+        color: '#fff'
+      },
+      selectedMode: 'multiple'
+    },
     geo: {
       map: "china",
       label: {
