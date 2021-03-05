@@ -39,6 +39,8 @@ header{
     flex: 3;
     &:nth-child(2) {
       flex: 5;
+      margin: 0 .1875rem;
+      overflow: hidden;
     }
   }
   .panel{
@@ -255,12 +257,12 @@ header{
   }
 }
 
+// 约束屏幕尺寸
 @media screen and (max-width: 1024px) {
   html {
     font-size: 42px !important;
   }
 }
-
 @media screen and (min-width: 1920) {
   html {
     font-size: 80px !important;

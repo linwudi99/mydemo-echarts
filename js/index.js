@@ -80,6 +80,10 @@ getCurrentTime();
     }],
     yAxis: [{
       type: 'value',
+      // 不显示刻度
+      axisTick: {
+        show: false
+      },
       // 修改刻度标签样式
       axisLabel: {
         color: 'rgba(255,255,255,.6)',
@@ -100,7 +104,7 @@ getCurrentTime();
       }
     }],
     series: [{
-      name: '直接访问',
+      // name: '直接访问',
       type: 'bar',
       // 修改柱状图柱子宽度
       barWidth: '40%',      
@@ -509,8 +513,10 @@ getCurrentTime();
 
 // 饼图1
 (function () {
+  var myColor = ['#F9CB60', '#8B4BE7', '#72BEDD', '#FE8754', '#8BCD7A']
   var myChart = echarts.init(document.querySelector('.pie .chart'))
   var option = {
+    color: myColor,
     tooltip: {
       trigger: 'item',
       formatter: "{a} <br/>{b}: {c} ({d}%)",
@@ -548,7 +554,7 @@ getCurrentTime();
         show: false
       },
       data: [
-        {value: 1,name: "0岁以下"},
+        {value: 1,name: "20岁以下"},
         {value: 4,name: "20-29岁"},
         {value: 2,name: "30-39岁"},
         {value: 2,name: "40-49岁"},
@@ -564,8 +570,10 @@ getCurrentTime();
 
 // 饼图2
 (function () {
+  var myColor = ['#596AC3', '#8ACD7B', '#F9CB60', '#F16865', '#72BEDD', '#2EA375', '#FE8754', '#9D5BB0']
   var myChart = echarts.init(document.querySelector('.pie2 .chart'))
   var option = {
+    color: myColor,
     tooltip: {
       trigger: 'item',
       formatter: "{a} <br/>{b}: {c} ({d}%)",

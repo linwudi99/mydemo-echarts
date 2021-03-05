@@ -41,6 +41,8 @@ header .time {
 }
 .main .col:nth-child(2) {
   flex: 5;
+  margin: 0 0.1875rem;
+  overflow: hidden;
 }
 .main .panel {
   position: relative;
