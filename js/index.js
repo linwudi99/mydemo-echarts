@@ -241,10 +241,24 @@ getCurrentTime();
 
 // 折线图1
 (function() {
-  var myColor = ["#00f2f1", "#ed3f35"]
-  var data = [
-    [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
-    [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79]
+  var myColor = ["#00f2f1", "#ed3f35", "#FCED83"]
+  var dataAll = [
+    {
+      year:'2020',
+      data: [
+        [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
+        [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79],
+        [50, 86, 99, 110, 129, 133, 189, 256, 338, 286, 223, 196]       
+      ]
+    },
+    {
+      year: '2021',
+      data: [
+        [30, 40, 120, 144, 180, 210, 210, 250, 187, 229, 238, 300],
+        [50, 64, 200, 224, 290, 300, 310, 280, 210, 189, 174, 88],
+        [50, 86, 181, 96, 220, 240, 258, 276, 293, 348, 296, 222]
+      ]
+    }
   ]
   var month = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
   var myChart = echarts.init(document.querySelector('.line .chart'))
@@ -281,6 +295,7 @@ getCurrentTime();
     },
     xAxis: {
       type: 'category',
+      // 去除轴内间距
       boundaryGap: false,
       data: month,
       // 去除刻度
@@ -316,19 +331,308 @@ getCurrentTime();
     series: [{
         name: '邮件营销',
         type: 'line',
-        stack: '总量',
-        data: data[0],
+        // stack: '总量',
+        data: dataAll[0].data[0],
         // 是否让线条圆滑显示
         smooth: true,
       },
       {
         name: '联盟广告',
         type: 'line',
-        stack: '总量',
-        data: data[1],
+        // stack: '总量',
+        data: dataAll[0].data[1],
         smooth: true,
+      },
+      {
+        name: '搜索引擎',
+        type: 'line',
+        // stack: '总量',
+        data: dataAll[0].data[2],
+        smooth: true,
+      },
+    ]
+  };
+  myChart.setOption(option);
+  window.addEventListener("resize", function () {
+    myChart.resize();
+  });
+  // 2020,2021数据切换
+  $(".line h2 ").on("click", "a", function () {
+    option.series[0].data = dataAll[$(this).index()].data[0];
+    option.series[1].data = dataAll[$(this).index()].data[1];
+    option.series[2].data = dataAll[$(this).index()].data[2];
+    myChart.setOption(option);
+  });
+})();
+
+// 折线图2
+(function () {
+  var date = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"]
+  var myChart = echarts.init(document.querySelector('.line2 .chart'))
+  var option = {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        lineStyle: {
+          color: "#dddc6b"
+        }
+      }
+    },
+    legend: {
+      top: "0%",
+      textStyle:{
+        color:'rgba(255,255,255,.5)'
+      }
+    },
+    grid: {
+      top:'20%',
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: {
+      type: 'category',
+      // 去除轴内间距
+      boundaryGap: false,
+      // 去除刻度
+      axisTick: {
+        show: false
+      },
+      // 修饰刻度标签的颜色
+      axisLabel: {
+        color: "rgba(255,255,255,.6)"
+      },
+      // 去除x坐标轴的颜色
+      axisLine: {
+        show: false
+      },
+      data: date,
+    },
+    yAxis: [{
+      type: 'value',
+      axisTick: {
+        show: false
+      },
+      axisLabel: {       
+        color: "rgba(255,255,255,.6)",          
+      },
+      splitLine: {
+        lineStyle: {
+          color: "rgba(255,255,255,.1)"
+        }
+      }
+    }],
+    series: [{
+        name: '播放量',
+        type: 'line',
+        smooth: true,
+        lineStyle: {          
+          color: "#0184d5",
+          width: 2          
+        },
+        // 区域填充，设置渐变色
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0,0,0,1,
+            [
+              {
+                offset: 0,
+                color: "rgba(1, 132, 213, 0.4)" // 渐变的起始颜色
+              },
+              {
+                offset: 0.8,
+                color: "rgba(1, 132, 213, 0.1)" // 渐变的结束颜色
+              }
+            ],
+            false
+          ),
+          shadowColor: "rgba(0, 0, 0, 0.1)"          
+        },
+        // 设置拐点小圆点
+        symbol: "circle",
+        // 拐点大小
+        symbolSize: 10,
+        // 开始不显示拐点，鼠标经过才显示
+        showSymbol: false,
+        // 设置拐点颜色和边框
+        itemStyle:{
+          color: '#0184d5',
+          borderColor:'rgba(221,220,107,.1)',
+          borderWidth:12
+        },
+        data: [30,40,30,40,30,40,30,70,20,40,20,40,30,40,30,40,30,40,30,60,20,40,20,40,30,60,20,40,20,40]
+      },
+      {
+        name: '点赞量',
+        type: 'line',
+        smooth: true,
+        lineStyle: {
+          color: "#00d887",
+          width: 2
+        },
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0,0,0,1,
+            [
+              {
+                offset: 0,
+                color: "rgba(0, 216, 135, 0.4)"
+              },
+              {
+                offset: 0.8,
+                color: "rgba(0, 216, 135, 0.1)"
+              }
+            ],
+            false
+          ),
+          shadowColor: "rgba(0, 0, 0, 0.1)"
+        },
+        symbol: "circle",
+        symbolSize: 10,
+        showSymbol: false,
+        itemStyle: {
+          color: '#00d887',
+          borderColor: 'rgba(221,220,107,.1)',
+          borderWidth: 12
+        },
+        // emphasis: {
+        //   focus: 'series'
+        // },
+        data: [50,30,50,60,10,50,30,50,60,30,40,70,58,30,50,60,10,50,30,70,20,50,10,40,50,30,70,20,50,10,40]
       }
     ]
+  };
+  myChart.setOption(option);
+  window.addEventListener("resize", function () {
+    myChart.resize();
+  });
+})();
+
+// 饼图1
+(function () {
+  var myChart = echarts.init(document.querySelector('.pie .chart'))
+  var option = {
+    tooltip: {
+      trigger: 'item',
+      formatter: "{a} <br/>{b}: {c} ({d}%)",
+      position: function (p) {
+        //其中p为当前鼠标的位置
+        return [p[0] + 10, p[1] - 10];
+      }
+    },
+    legend: {
+      bottom: "0%",
+      // 设置小图标宽高
+      itemWidth: 10,
+      itemHeight: 10,
+      textStyle: {
+        color: "rgba(255,255,255,.5)",
+        fontSize: "12"
+      }
+    },
+    series: [{ 
+      name:'年龄分布',     
+      type: 'pie',
+      // 内圆、外圆半径
+      radius: ['40%', '60%'],
+      // 饼图位置
+      center:['50%','40%'],      
+      itemStyle: {
+        borderRadius: 5,
+      },
+      // 不显示标签文字
+      label: {
+        show: false
+      },
+      // 不显示连接图形和标签的线
+      labelLine: {
+        show: false
+      },
+      data: [
+        {value: 1,name: "0岁以下"},
+        {value: 4,name: "20-29岁"},
+        {value: 2,name: "30-39岁"},
+        {value: 2,name: "40-49岁"},
+        {value: 1,name: "50岁以上"}
+      ]
+    }]
+  };
+  myChart.setOption(option);
+  window.addEventListener("resize", function () {
+    myChart.resize();
+  });
+})();
+
+// 饼图2
+(function () {
+  var myChart = echarts.init(document.querySelector('.pie2 .chart'))
+  var option = {
+    tooltip: {
+      trigger: 'item',
+      formatter: "{a} <br/>{b}: {c} ({d}%)",
+      position: function (p) {
+        //其中p为当前鼠标的位置
+        return [p[0] + 10, p[1] - 10];
+      }
+    },
+    legend: {
+      top:'0%',
+      // 设置小图标宽高
+      itemWidth: 10,
+      itemHeight: 10,
+      textStyle: {
+        color: "rgba(255,255,255,.6)",
+        fontSize: "12"
+      }
+    },
+    series: [{
+      name: '面积模式',
+      type: 'pie',
+      radius: [10, 60],
+      center: ['50%', '55%'],
+      roseType: 'radius',
+      label:{
+        fontSize:10,
+        color: 'rgba(255,255,255,.6)'
+      },
+      // 图形和标签的连接线
+      labelLine:{
+        length: 6, // 连接图形的线
+        length2: 8 // 连接标签的线
+      },
+      data: [{
+          value: 40,
+          name: '北京'
+        },
+        {
+          value: 38,
+          name: '上海'
+        },
+        {
+          value: 32,
+          name: '江苏'
+        },
+        {
+          value: 30,
+          name: '安徽'
+        },
+        {
+          value: 28,
+          name: '河南'
+        },
+        {
+          value: 26,
+          name: '四川'
+        },
+        {
+          value: 22,
+          name: '福建'
+        },
+        {
+          value: 18,
+          name: '云南'
+        }
+      ]
+    }]
   };
   myChart.setOption(option);
   window.addEventListener("resize", function () {
